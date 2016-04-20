@@ -166,7 +166,7 @@ class hoicoiapiController extends JControllerLegacy {
                 $output[] = $item;
             }
         } elseif ($this->input->get('catid')) {
-            include_once JPATH_ROOT . '/components/com_content/models/articles.php';
+            JLoader::import( 'articles', JPATH_SITE . DS . 'components' . DS . 'com_content' . DS . 'models' );
             $model = new ContentModelArticles();
             $model->setState('filter.category_id', $this->input->get('catid'));
             $items = $model->getItems();
@@ -174,7 +174,7 @@ class hoicoiapiController extends JControllerLegacy {
                 $output[] = $item;
             }
         } elseif ($this->input->get('id')) {
-            include_once JPATH_ROOT . '/components/com_content/models/article.php';
+            JLoader::import( 'article', JPATH_SITE . DS . 'components' . DS . 'com_content' . DS . 'models' );
             $model = new ContentModelArticle();
             $output = $model->getItem($this->input->get('id'));
         }
