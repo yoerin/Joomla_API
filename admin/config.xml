@@ -5,7 +5,27 @@
 		name="tokenKey"
 		label="Access Token"
 		description="">
-		<field name="token" pattern=".{52,}" required="required" type="text" default="" label="Token Key" description="Please use at least 52 characters long token key."  />		
+		
+		<field
+			name="token"
+			pattern=".{52,}"
+			required="required"
+			type="text"
+			default=""
+			label="Token Key"
+			description="Please use at least 52 characters long token key." />
+		<field name="allow_tasks" type="checkboxes">
+			<option value="login">Login</option>
+			<option value="registration">Registration</option>
+			<option value="getEasyblog">Easyblog</option>
+			<option value="getContents">Contents</option>
+			<option value="getkunena">Kunena</option>
+			<option value="getK2">K2</option>
+			<option value="getVM">Virtuemart</option>
+			<option value="getHika">HikaShop</option>
+			<option value="getHikaImages">HikaImages</option>
+		</field>
+
 	</fieldset>	
 	
 </config>
