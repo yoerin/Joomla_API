@@ -8,7 +8,7 @@
  * @license    GNU/GPL
  */
 //-- No direct access
-defined('_JEXEC') || die('=;)');
+defined('_JEXEC') or die;
 
 /**
  * hoicoiapi Controller.
@@ -52,6 +52,16 @@ class hoicoiapiController extends JControllerLegacy {
 
     //http://YOURSITE.COM/index.php?option=com_hoicoiapi&task=registration&name=NAME&username=USERNAME&passwd=PASSWORD&email=EMAIL
     public function registration() {
+        
+        $uParams = JComponentHelper::getParams('com_users');
+
+        // If user registration or account activation is disabled, throw a 403.
+        if ($uParams->get('useractivation') == 0 || $uParams->get('allowUserRegistration') == 0)
+        {
+            jexit( JText::_('JLIB_APPLICATION_ERROR_ACCESS_FORBIDDEN') );
+
+            return false;
+        }
 
         $input = $this->input;
 
